@@ -140,7 +140,13 @@ function mostrarArts($CANTIDAD, $pag)
         } else {
             $articulosInput = "<section class='articles'><ul>";
             foreach ($articulos as $a) {
-                $articulosInput .= "<li><strong>" . $a['ID'] . ".- </strong>" . $a['article'] . " ( <strong>" . $a['autor'] . "</strong> )</li>";
+                if($a['rutaImagen'] != null){
+                    $articulosInput .= "<li><strong> " . $a['ID'] . '.- <img src="' . $a['rutaImagen'] . '" alt="Imagen" style="max-width: 50px;"> ' ; 
+                    $articulosInput .= "</strong> ". htmlspecialchars($a['article']) . "  <strong>" . $a['autor'] . " </strong>";
+                }else{
+                    $articulosInput .= "<li><strong>" . $a['ID'] . ".- </strong>" . htmlspecialchars($a['article']) . " ( <strong>" . $a['autor'] . "</strong> )</li>";
+                }
+                
             }
             $articulosInput .= "</ul></section>";
             echo $articulosInput;

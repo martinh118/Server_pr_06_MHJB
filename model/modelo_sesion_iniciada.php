@@ -119,16 +119,16 @@ function editarArticulo($idart, $article){
 }
 
 
-function crearArticuloUsuario($id, $article, $autor, $imagen){
+function crearArticuloUsuario($id, $article, $autor, $rutaImagen){
     try {
         $connexio = conectar();
-        $statement = $connexio->prepare('INSERT INTO articles (ID,  article, autor,imagen) VALUES (:id, :article, :autor,:imagen )');
+        $statement = $connexio->prepare('INSERT INTO articles (ID,  article, autor,rutaImagen) VALUES (:id, :article, :autor,:imagen )');
         $statement->execute(
             array(
                 ':id' => $id,
                 ':article' => $article,
                 ':autor' => $autor,
-                ':imagen' => $imagen
+                ':imagen' => $rutaImagen
             )
         );
     } catch (PDOException $e) { //

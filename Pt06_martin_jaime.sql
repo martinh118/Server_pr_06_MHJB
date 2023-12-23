@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `articles`(
     ID MEDIUMINT NOT NULL,
     article text NOT NULL,
     autor text NOT NULL,
-    imagen longblob,
+    rutaImagen VARCHAR(150),
     PRIMARY KEY (ID)
 );
 

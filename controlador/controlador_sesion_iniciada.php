@@ -202,9 +202,14 @@ function mostrarArts($CANTIDAD, $pag)
             foreach ($articulos as $a) {
 
                 if ($a['autor'] != $_SESSION['usuario']) {
-
-                    $articulosInput .= "<li><strong>" . $a['ID'] . ".- </strong>" . $a['article'] . " ( <strong>" . $a['autor'] . "</strong> )";
-                    $articulosInput .= "</li>";
+                    if($a['rutaImagen'] != null){
+                        $articulosInput .= "<li><strong> " . $a['ID'] . '".- <img src="' . $a['rutaImagen'] . '" alt="Imagen" style="max-width: 50px;">';
+                        $articulosInput .= "</strong> ". htmlspecialchars($a['article']) . "  <strong>" . $a['autor'] . " </strong>";
+                    }else {
+                        $articulosInput .= "<li><strong>" . $a['ID'] . ".- </strong>" . $a['article'] . " ( <strong>" . $a['autor'] . "</strong> )";
+                        $articulosInput .= "</li>";
+                    }
+                    
                 }
             }
             $articulosInput .= "</ul></section>";
@@ -237,10 +242,17 @@ function mostrarArtsUsers($arts, $pag)
             $pag = $_GET['pagina'];
             $articulosInput = "<section class='articles'><ul>";
 
+            //obtener imagen:
+            $conect = conectar();
+            
+
             foreach ($articulos as $a) {
 
                 if ($a['autor'] == $_SESSION['usuario']) {
-                    $articulosInput .= "<li><strong> " . $a['ID'] . ".- </strong>" . htmlspecialchars($a['article']) . " ( <strong>" . $a['autor'] . " </strong>)";
+                    
+                                      
+                    $articulosInput .= "<li><strong> " . $a['ID'] . '.- <img src="' . $a['rutaImagen'] . '" alt="Imagen" style="max-width: 50px;"> ' ; 
+                    $articulosInput .= "</strong> ". htmlspecialchars($a['article']) . "  <strong>" . $a['autor'] . " </strong>";
                     $articulosInput .= "&nbsp&nbsp<button id='borrar'><a  href='../controlador/controlador_sesion_iniciada.php?pagina=" . $pag . "&id= " . $a['ID'] . "&edit=" . "borrar" . "'>Borrar</a></button> &nbsp&nbsp";
                     $articulosInput .= "<button><a href='../vista/editar_articulo.php?id= " . $a['ID'] . "'>Editar</a></button>";
                     $articulosInput .= "</li>";

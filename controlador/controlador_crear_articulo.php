@@ -11,16 +11,35 @@ session_start();
         
 }
 
-$check = getimagesize($_FILES['imagen']['tmp_name']);
-if($check !== false){
-    $image = $_FILES['imagen']['tmp_name'];
-    $imgContent = addslashes(file_get_contents($image));
-}else $imgContent = null;
+$errorArchivo = $_FILES['imagen']['error'];
+$rutaTemporal = $_FILES['imagen']['tmp_name'];
+$nombreArchivo = $_FILES['imagen']['name'];
+
+if ($errorArchivo === UPLOAD_ERR_OK){
+
+    $directorioDestino = '../src/';
+    // Generar un nombre único para evitar posibles conflictos
+    $nombreArchivoFinal = uniqid('imagen_') . '_' . $nombreArchivo;
+
+    // Mover el archivo a la ubicación deseada
+    move_uploaded_file($rutaTemporal, $directorioDestino . $nombreArchivoFinal);
+
+    // Ahora, $nombreArchivoFinal contiene el nombre único de la imagen en tu sistema de archivos
+
+    
+$rutaCompletaArchivo = $directorioDestino . $nombreArchivoFinal;
+// Realizar la inserción en la base de datos con $rutaCompletaArchivo
+} else {
+    // Manejar errores en la carga del archivo
+    $rutaCompletaArchivo = null;
+    echo 'Imagen no detectada. <br>';
+}
+
 
 //Selecciona tots els articles registrats a la base de dades per obtenir el següent numero d'identificació del nou article.
 $articulos = seleccionarArticulos()->fetchAll();
 $num = count($articulos) + 1;
 
 // Crea l'article.
-crearArticuloUsuario($num, $_POST['content'], $user, $imgContent);
+crearArticuloUsuario($num, $_POST['content'], $user, $rutaCompletaArchivo);
 echo "Articulo creado.";
