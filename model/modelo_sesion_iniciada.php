@@ -102,13 +102,14 @@ function reordenarArticulos(){
  * @param idart: identiicador de l'article
  * @param article: articles a modificar.
  */
-function editarArticulo($idart, $article, $ruta){
+function editarArticulo($idart, $titulo ,$article, $ruta){
     try {
         $connexio = conectar();
-        $statement = $connexio->prepare('UPDATE articles SET article = :article, rutaImagen = :ruta WHERE id = :id');
+        $statement = $connexio->prepare('UPDATE articles SET titulo = :titulo,article = :article, rutaImagen = :ruta WHERE id = :id');
         $statement->execute(
             array(
                 ':id' =>$idart,
+                ':titulo' => $titulo,
                 ':article' => $article,
                 ':ruta' => $ruta
             )
@@ -120,13 +121,14 @@ function editarArticulo($idart, $article, $ruta){
 }
 
 
-function crearArticuloUsuario($id, $article, $autor, $rutaImagen){
+function crearArticuloUsuario($id,$titulo, $article, $autor, $rutaImagen){
     try {
         $connexio = conectar();
-        $statement = $connexio->prepare('INSERT INTO articles (ID,  article, autor,rutaImagen) VALUES (:id, :article, :autor,:imagen )');
+        $statement = $connexio->prepare('INSERT INTO articles (ID, titulo,article, autor,rutaImagen) VALUES (:id, :titulo,:article, :autor,:imagen )');
         $statement->execute(
             array(
                 ':id' => $id,
+                'titulo' => $titulo,
                 ':article' => $article,
                 ':autor' => $autor,
                 ':imagen' => $rutaImagen

@@ -138,17 +138,19 @@ function mostrarArts($CANTIDAD, $pag)
             </script>
 <?php
         } else {
-            $articulosInput = "<section class='articles'><ul>";
+            $articulosInput = "<div class='articles'>";
             foreach ($articulos as $a) {
                 if($a['rutaImagen'] != null){
-                    $articulosInput .= "<li><strong> " . $a['ID'] . '.- <img src="' . $a['rutaImagen'] . '" alt="Imagen" style="max-width: 50px;"> ' ; 
-                    $articulosInput .= "</strong> ". htmlspecialchars($a['article']) . "  <strong>" . $a['autor'] . " </strong>";
+                    $articulosInput .= "<ul  > <div style='text-align: center;'>";
+                    $articulosInput .= '<img class="imgArticle" src="' . $a['rutaImagen'] . '" alt="Imagen" ><br><br>';
+                    $articulosInput .= "<strong>" . $a['ID'] . " .-" . $a['titulo'] . " </strong><br>";
+                    $articulosInput .= "</strong> ". htmlspecialchars($a['article']) . "  <strong><br>Usuario: " . $a['autor'] . " </strong><div></ul>";
                 }else{
                     $articulosInput .= "<li><strong>" . $a['ID'] . ".- </strong>" . htmlspecialchars($a['article']) . " ( <strong>" . $a['autor'] . "</strong> )</li>";
                 }
                 
             }
-            $articulosInput .= "</ul></section>";
+            $articulosInput .= "</div> ";
             echo $articulosInput;
         }
     } catch (PDOException $e) { //

@@ -41,5 +41,5 @@ $articulos = seleccionarArticulos()->fetchAll();
 $num = count($articulos) + 1;
 
 // Crea l'article.
-crearArticuloUsuario($num, $_POST['content'], $user, $rutaCompletaArchivo);
+crearArticuloUsuario($num,$_POST['titulo'] ,$_POST['content'], $user, $rutaCompletaArchivo);
 echo "Articulo creado.";

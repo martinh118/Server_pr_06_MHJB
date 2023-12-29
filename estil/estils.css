@@ -61,6 +61,8 @@ h1 {
 
 .contenidor .articles {
 	margin-bottom: 20px;
+	display:flex;
+	justify-content: center;
 }
 
 .contenidor .articles ul {
@@ -116,4 +118,12 @@ h1 {
 
 a#equis{
 	margin-left: 0%;
+}
+
+.imgArticle{
+	padding: 10px 20px;
+	border-style:solid; 
+	border-width: 2px; 
+	border-radius: 5px; 
+	max-height:250px;
 }

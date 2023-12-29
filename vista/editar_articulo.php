@@ -22,17 +22,32 @@
                     <!-- Valor d'entrada amb el nom 'nom'. El value que conté dades php fa que en cas que detecti el valor de 'nom' amb la funció isset,
                         mostrarà el valor, en cas contrari mostra null (el valor estarà buit)  -->
 
-                    <textarea name="content" id="content" cols="30" rows="10" value=<?php isset($_POST['content']) ? $_POST['content'] : '' ?>>
+                    <input type="text" name="titulo" id="titulo" value=<?php isset($_POST['titulo']) ? $_POST['titulo'] : '' ?>>
                     <?php
-                    require_once("../model/modelo_sesion_iniciada.php");
+                    include_once("../model/modelo_sesion_iniciada.php");
                     session_start();
                     if (isset($_GET['id'])) {
                         $id = $_GET['id'];
                         $art = seleccionarArticuloUnico($id)->fetch();
-                        echo $art['article'];
+                        echo $art['titulo'];
                         $_SESSION['idArt'] = $id;
                         $_SESSION['imagenArticulo'] = $art['rutaImagen'];
                         $_SESSION['art'] = $art['article'];
+                    }
+                    ?>
+                    </input>
+
+                </div>
+                <div>
+                    <!-- Valor d'entrada amb el nom 'nom'. El value que conté dades php fa que en cas que detecti el valor de 'nom' amb la funció isset,
+                        mostrarà el valor, en cas contrari mostra null (el valor estarà buit)  -->
+
+                    <textarea name="content" id="content" value=<?php isset($_POST['content']) ? $_POST['content'] : '' ?>>
+                    <?php
+                    if (isset($_GET['id'])) {
+                        
+                        echo $art['article'];
+                        
                     }
                     ?>
                     </textarea>

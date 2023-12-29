@@ -17,12 +17,17 @@
         <form action="../controlador/controlador_crear_articulo.php" method="post" class="firstForm" enctype="multipart/form-data">
             <h2>Crear article</h2>
             <div>
-
+            <label>* Titol article</label>
+                <div>
+                    <!-- Valor d'entrada amb el nom 'nom'. El value que conté dades php fa que en cas que detecti el valor de 'nom' amb la funció isset,
+                        mostrarà el valor, en cas contrari mostra null (el valor estarà buit)  -->
+                    <input type="text" name="titulo" id="titulo"></input>
+                </div>
                 <label>* Contingut article</label>
                 <div>
                     <!-- Valor d'entrada amb el nom 'nom'. El value que conté dades php fa que en cas que detecti el valor de 'nom' amb la funció isset,
                         mostrarà el valor, en cas contrari mostra null (el valor estarà buit)  -->
-                    <textarea name="content" id="content" cols="30" rows="10" ></textarea>
+                    <textarea name="content" id="content"  ></textarea>
                 </div>
                 <div>
                     <label> Aplicar imatge</label>

@@ -36,10 +36,11 @@ $rutaCompletaArchivo = $directorioDestino . $nombreArchivoFinal;
 if (isset($_SESSION['usuario'])) {
     $user = $_SESSION["usuario"];
     $art = $_POST['content'];
+    $tituloArt = $_POST['titulo'];
     $id = $_SESSION['idArt'];
    
 }
 
 //Edita l'article creat.
-    editarArticulo($id, trim($art), $rutaCompletaArchivo);
+    editarArticulo($id, $tituloArt,trim($art), $rutaCompletaArchivo);
     echo "Articulo editado.";
