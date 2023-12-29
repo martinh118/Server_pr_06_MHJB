@@ -102,14 +102,15 @@ function reordenarArticulos(){
  * @param idart: identiicador de l'article
  * @param article: articles a modificar.
  */
-function editarArticulo($idart, $article){
+function editarArticulo($idart, $article, $ruta){
     try {
         $connexio = conectar();
-        $statement = $connexio->prepare('UPDATE articles SET article = :article WHERE id = :id');
+        $statement = $connexio->prepare('UPDATE articles SET article = :article, rutaImagen = :ruta WHERE id = :id');
         $statement->execute(
             array(
                 ':id' =>$idart,
-                ':article' => $article
+                ':article' => $article,
+                ':ruta' => $ruta
             )
         );
     } catch (PDOException $e) { //

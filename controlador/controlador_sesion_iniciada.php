@@ -36,12 +36,9 @@ function mostrarNombre()
  */
 function aplicarDatos($nom)
 {
-    $statement = selectUsuario($nom)->fetchAll();
-
-    foreach ($statement as $user) {
-        $_SESSION["ID"] = $user['ID'];
-        $_SESSION["table"] = ($nom . $user['ID']);
-    }
+    $user = selectUsuario($nom)->fetch();
+    $_SESSION["ID"] = $user['ID'];
+    $_SESSION["table"] = ($nom . $user['ID']);
 }
 
 /**
@@ -241,9 +238,6 @@ function mostrarArtsUsers($arts, $pag)
 
             $pag = $_GET['pagina'];
             $articulosInput = "<section class='articles'><ul>";
-
-            //obtener imagen:
-            $conect = conectar();
             
 
             foreach ($articulos as $a) {
