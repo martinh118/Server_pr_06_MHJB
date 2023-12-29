@@ -31,7 +31,7 @@ $rutaCompletaArchivo = $directorioDestino . $nombreArchivoFinal;
 // Realizar la inserción en la base de datos con $rutaCompletaArchivo
 } else {
     // Manejar errores en la carga del archivo
-    $rutaCompletaArchivo = null;
+    $rutaCompletaArchivo = "../src/claqueta_accion.png";
     echo 'Imagen no detectada. <br>';
 }
 

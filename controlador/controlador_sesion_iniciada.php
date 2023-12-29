@@ -277,7 +277,12 @@ function edicion()
 
     if (isset($_GET['edit'])) {
         $idart = $_GET['id'];
-        require_once('../model/modelo_sesion_iniciada.php');
+        $art = seleccionarArticuloUnico($idart);
+        $articulo = $art -> fetch();
+
+        if($articulo['rutaImagen'] != '../src/claqueta_accion.png' ){
+            unlink($articulo['rutaImagen']);
+        }
         eliminarArticulo($idart);
     }
 }

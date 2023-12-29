@@ -1,11 +1,14 @@
+DROP DATABASE IF EXISTS `pt06_martin_jaime`;
+
 CREATE DATABASE IF NOT EXISTS `pt06_martin_jaime`;
 USE `pt06_martin_jaime`;
+
 
 CREATE TABLE IF NOT EXISTS `articles`(
     ID MEDIUMINT NOT NULL,
     article text NOT NULL,
     autor text NOT NULL,
-    rutaImagen VARCHAR(150),
+    rutaImagen VARCHAR(150) DEFAULT '../src/claqueta_accion.png',
     PRIMARY KEY (ID)
 );
 
