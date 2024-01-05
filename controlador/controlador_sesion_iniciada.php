@@ -24,7 +24,8 @@ function mostrarNombre()
 {
     session_start();
     if (isset($_SESSION['usuario'])) {
-        echo $_SESSION["usuario"];
+        $content = $_SESSION["usuario"];
+        echo $content;
     }
 }
 
@@ -193,22 +194,24 @@ function mostrarArts($CANTIDAD, $pag)
             $articulosInput = "<br>No hay articulos disponibles";
         } else {
 
-            $pag = $_GET['pagina'];
+            if(isset($_GET['pagina'])){
+                $pag = $_GET['pagina'];
+            }else $pag = 1;
+
             $articulosInput = "<div class='articles'>";
 
             foreach ($articulos as $a) {
 
                 if ($a['autor'] != $_SESSION['usuario']) {
-                    if($a['rutaImagen'] != null){
+                    if ($a['rutaImagen'] != null) {
                         $articulosInput .= "<ul> <div style='text-align: center;'>";
-                    $articulosInput .= '<img class="imgArticle" src="' . $a['rutaImagen'] . '" alt="Imagen" ><br><br>';
-                    $articulosInput .= "<strong>" . $a['ID'] . " .-" . $a['titulo'] . " </strong><br>";
-                    $articulosInput .= "</strong> ". htmlspecialchars($a['article']) . "  <strong><br>Usuario: " . $a['autor'] . " </strong><div></ul>";
-                    }else {
+                        $articulosInput .= '<img class="imgArticle" src="' . $a['rutaImagen'] . '" alt="Imagen" ><br><br>';
+                        $articulosInput .= "<strong>" . $a['ID'] . " .-" . $a['titulo'] . " </strong><br>";
+                        $articulosInput .= "</strong> " . htmlspecialchars($a['article']) . "  <strong><br>Usuario: " . $a['autor'] . " </strong><div></ul>";
+                    } else {
                         $articulosInput .= "<li><strong>" . $a['ID'] . ".- </strong>" . $a['article'] . " ( <strong>" . $a['autor'] . "</strong> )";
                         $articulosInput .= "</li>";
                     }
-                    
                 }
             }
             $articulosInput .= "</div>";
@@ -240,7 +243,7 @@ function mostrarArtsUsers($arts, $pag)
 
             $pag = $_GET['pagina'];
             $articulosInput = "<section class='articles'><ul>";
-            
+
 
             foreach ($articulos as $a) {
 
@@ -248,7 +251,7 @@ function mostrarArtsUsers($arts, $pag)
                     $articulosInput .= "<ul  > <div style='text-align: center;'>";
                     $articulosInput .= '<img class="imgArticle" src="' . $a['rutaImagen'] . '" alt="Imagen" ><br><br>';
                     $articulosInput .= "<strong>" . $a['ID'] . " .-" . $a['titulo'] . " </strong><br>";
-                    $articulosInput .= "</strong> ". htmlspecialchars($a['article']) . "  <strong><br>Usuario: " . $a['autor'] . " </strong><div><br>";
+                    $articulosInput .= "</strong> " . htmlspecialchars($a['article']) . "  <strong><br>Usuario: " . $a['autor'] . " </strong><div><br>";
                     $articulosInput .= "&nbsp&nbsp<button id='borrar'><a  href='../controlador/controlador_sesion_iniciada.php?pagina=" . $pag . "&id= " . $a['ID'] . "&edit=" . "borrar" . "'>Borrar</a></button> &nbsp&nbsp";
                     $articulosInput .= "<button><a href='../vista/editar_articulo.php?id= " . $a['ID'] . "'>Editar</a></button></ul>";
                     /*
@@ -279,9 +282,9 @@ function edicion()
     if (isset($_GET['edit'])) {
         $idart = $_GET['id'];
         $art = seleccionarArticuloUnico($idart);
-        $articulo = $art -> fetch();
+        $articulo = $art->fetch();
 
-        if($articulo['rutaImagen'] != '../src/claqueta_accion.png' ){
+        if ($articulo['rutaImagen'] != '../src/claqueta_accion.png') {
             unlink($articulo['rutaImagen']);
         }
         eliminarArticulo($idart);

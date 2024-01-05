@@ -23,9 +23,10 @@
 <body>
 
 	<header>
-		<h2>Pt_04_Martín_Jaime </h2>
+		<h2>Pt_06_Martín_Jaime </h2>
 
 		<h3> <?php mostrarNombre(); ?> </h3>
+		<a href="../vista/editar_usuari.php?nom=<?php echo $_SESSION['usuario'] ?>">EDITAR USUARI</a>
 		<a href="../vista/index.vista.php">TANCAR SESSIÓ</a>
 	</header>
 

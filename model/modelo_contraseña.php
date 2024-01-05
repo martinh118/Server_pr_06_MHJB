@@ -46,3 +46,25 @@ function cambioContraseña($email, $contra){
         echo "Error: " . $e->getMessage();
     }
 }
+
+/**
+ * canvia la contrasenya de l'usuari
+ * @param nombre: nombre de l'usuari
+ * @param contra: nova contrasenya
+ */
+function cambioContraseñaUsuario($nombre, $contra){
+    try {
+        $connexio = conectar();
+        $statement = $connexio->prepare('UPDATE users SET contra = :contra WHERE nom_usuari = :nombre');
+        $statement->execute(
+            array(
+                ':contra' => $contra,
+                ':nombre' => $nombre
+            )
+        );
+        
+    } catch (PDOException $e) { //
+        // mostrarem els errors
+        echo "Error: " . $e->getMessage();
+    }
+}

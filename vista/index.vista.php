@@ -13,13 +13,13 @@
 	<?php
 	/**
 	 * @author Martín Hernan Jaime Bonvin
-	 * @version 1.0
+	 * @version 4.0
 	 */
 
 	require_once("../controlador/controlador_index.php");
 	?>
 	<header>
-		<h2>Pt_04_Martín_Jaime</h2>
+		<h2>Pt_06_Martín_Jaime</h2>
 		<a href="../vista/inicio_sesion.php">INICIAR SESSION</a>
 		<a href="../vista/registro.php">REGISTRAR-SE</a>
 	</header>
