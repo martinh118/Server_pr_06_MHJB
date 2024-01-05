@@ -8,15 +8,26 @@
 	<link rel="stylesheet" href="../estil/estils.css"> <!-- feu referència al vostre fitxer d'estils -->
 	<title>Pt_06_MHJB</title>
 </head>
-
-<body>
-	<?php
+<?php
 	/**
 	 * @author Martín Hernan Jaime Bonvin
 	 * @version 1.0
 	 */
-	require_once("../controlador/controlador_editar_usuario.php");
+	include_once("../controlador/controlador_editar_usuario.php");
 	?>
+<script>
+    function confirmarAccion() {
+        if (confirm('Deseas continuar?')) {
+            return true;
+        } else {
+            alert('Operacion Cancelada');
+            return false;
+        }
+    }
+</script>
+
+<body>
+	
 	<header>
 		<h2>Pt_06_Martín_Jaime</h2>
 		<h3> <?php mostrarNombre(); ?> </h3>
@@ -43,6 +54,12 @@
 		<form action="" method="post" class="thirthForm">
 			<div>
 				<input type="submit" value="Editar articles">
+			</div>
+		</form>
+
+		<form action="../controlador/controlador_eliminar_usuario.php" method="post" class="thirthForm">
+			<div>
+				<input type="submit" value="Esborrar usuari" onclick="return confirmarAccion()">
 			</div>
 		</form>
 

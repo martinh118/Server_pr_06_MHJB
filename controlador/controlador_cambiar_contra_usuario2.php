@@ -4,10 +4,12 @@ include_once("../model/modelo_contraseña.php");
 include_once("../model/modelo_registro.php");
 
 session_start();
-if (comprobarContraActual()) {
+function cambiarContra(){
+    
     $error = "";
-    $error = comprobarContraseñasNuevas();
-    $error = comprobarActualNueva();
+    $error .= comprobarContraActual();
+    $error .= comprobarContraseñasNuevas();
+    $error .= comprobarActualNueva();
     if ($error == "") {
         $nuevaContra = password_hash($_POST['contraNueva'], PASSWORD_DEFAULT);
         cambioContraseñaUsuario($_SESSION['usuario'], $nuevaContra);
@@ -18,11 +20,11 @@ if (comprobarContraActual()) {
 
 function comprobarContraActual()
 {
-    $email = $_SESSION['email'];
-    $user = selectEmail($email)->fetch();
+    $nom = $_SESSION['usuario'];
+    $user = selectUsuario($nom)->fetch();
     $contraseñaActual = $_POST['contraActual'];
 
-    return password_verify($contraseñaActual, $user['contra']) ? true : false;
+    return password_verify($contraseñaActual, $user['contra']) ? "" : "Error al comprovar contraseyta actual<br>";
 }
 
 function comprobarActualNueva()
@@ -30,7 +32,7 @@ function comprobarActualNueva()
     $contraActual = $_POST['contraActual'];
     $contraNueva = $_POST['contraNueva'];
     if($contraActual == $contraNueva){
-        return "La contrasenya nova no pot ser la mateix que l'actual.";
+        return "La contrasenya nova no pot ser la mateix que l'actual.<br>";
     }else return "";
 }
 
@@ -49,3 +51,5 @@ function comprobarContraseñasNuevas()
         } else return "Las nuevas contraseñas NO coinciden<br>";
     } else return "Los campos no pueden estar vacios<br>";
 }
+
+cambiarContra();

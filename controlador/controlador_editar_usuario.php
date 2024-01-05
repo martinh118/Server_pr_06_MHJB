@@ -1,4 +1,7 @@
-<?php 
+<?php
+include_once("../vista/editar_usuari.php");
+
+
 function mostrarNombre()
 {
     session_start();
@@ -7,4 +10,7 @@ function mostrarNombre()
         echo $content;
     }
 }
+
+
+
 
