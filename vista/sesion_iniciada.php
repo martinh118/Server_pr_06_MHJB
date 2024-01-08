@@ -26,6 +26,7 @@
 		<h2>Pt_06_Martín_Jaime </h2>
 
 		<h3> <?php mostrarNombre(); ?> </h3>
+		<a href="../vista/galeria_imagenes.php?pagina=<?php echo 1 ?>&nom=<?php echo $_SESSION['usuario'] ?>">GALERIA D'IMATGES</a>
 		<a href="../vista/editar_usuari.php?nom=<?php echo $_SESSION['usuario'] ?>">EDITAR USUARI</a>
 		<a href="../vista/index.vista.php">TANCAR SESSIÓ</a>
 	</header>

@@ -16,7 +16,7 @@ function iniciar()
     try {
         // Ens connectem a la base de dades...
         $conexion = conectar();
-
+        session_unset();
         if ($conexion) {
             $cantidadPagina = 5;
 

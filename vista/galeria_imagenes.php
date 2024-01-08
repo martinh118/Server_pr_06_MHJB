@@ -16,23 +16,19 @@
 	 * @version 4.0
 	 */
 
-	require_once("../controlador/controlador_index.php");
+	require_once("../controlador/controlador_galeria_imagenes.php");
 	?>
 	<header>
-		<h2>Pt_06_Martín_Jaime</h2>
-		<a href="../vista/galeria_imagenes.php?pagina=<?php echo 1 ?>">GALERIA D'IMATGES</a>
-		<a href="../vista/inicio_sesion.php">INICIAR SESSION</a>
-		<a href="../vista/registro.php">REGISTRAR-SE</a>
+		<?php opcionesHeader(); ?>
+	
 	</header>
 
 	<div class="contenidor">
-		<h1>Articles</h1>
+		<h1>Galeria d'imatges</h1>
 
 		<?php
-		/**
-		 * A partir de fer un require_once de l'arxiu controlador, executa la funció per mostrar tots els articles i la paginació.
-		 */
-		iniciar();
+		require_once("../model/modelo_principal.php");
+		mostrarImagenes();
 		?>
 
 	</div>

@@ -238,7 +238,7 @@ function mostrarArtsUsers($arts, $pag)
         $articulos = $arts;
         $articulosInput = "";
         if (empty($articulos)) {
-            $articulosInput = "<br>No hay articulos disponibles";
+            $articulosInput = "<br>No hi ha articles disponibles.";
         } else {
 
             $pag = $_GET['pagina'];
