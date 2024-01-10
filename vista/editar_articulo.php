@@ -26,6 +26,13 @@
                     <?php
                     include_once("../model/modelo_sesion_iniciada.php");
                     session_start();
+                    /**
+                     * Selecciona l'article que es vol editar.
+                     */
+                    /**
+                     * @author Martín Hernan Jaime Bonvin
+                     * @version 4.0
+                     */
                     if (isset($_GET['id'])) {
                         $id = $_GET['id'];
                         $art = seleccionarArticuloUnico($id)->fetch();
@@ -45,9 +52,8 @@
                     <textarea name="content" id="content" value=<?php isset($_POST['content']) ? $_POST['content'] : '' ?>>
                     <?php
                     if (isset($_GET['id'])) {
-                        
+
                         echo $art['article'];
-                        
                     }
                     ?>
                     </textarea>
@@ -57,7 +63,7 @@
             <div>
                 <label> Aplicar imatge</label>
                 <br><br>
-                <input type="file" name="imagen" >
+                <input type="file" name="imagen">
             </div>
 
             <div>

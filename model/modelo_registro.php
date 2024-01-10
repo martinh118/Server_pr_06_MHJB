@@ -2,8 +2,8 @@
 
 <?php
 /**
- * @author Martin H. Jaime Bonvin
- * @version 2.0
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
  */
 require_once("../model/modelo_principal.php");
 

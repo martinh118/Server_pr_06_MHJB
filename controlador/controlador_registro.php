@@ -2,7 +2,7 @@
 
 /**
  * @author Martín Hernan Jaime Bonvin
- * @version 2.0
+ * @version 4.0
  */
 
 require_once("../vista/registro.php");

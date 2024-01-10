@@ -1,10 +1,11 @@
-<?php 
+<?php
+
 /**
- * @author Martin H. Jaime Bonvin
- * @version 2.0
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
  */
 
- require_once("../model/modelo_principal.php");
+require_once("../model/modelo_principal.php");
 /**
  * Mostra els articles amb els rangs de números corresponents i que el valor de la columna de l'usuari sigui 1.
  * @param connexio: Connexió a la Base de Dades.
@@ -40,7 +41,7 @@ function seleccionarArticulosUsuario($nom)
 {
     try {
         $connexio = conectar();
-        $statement = $connexio->prepare('SELECT * FROM articles WHERE autor = :nom' );
+        $statement = $connexio->prepare('SELECT * FROM articles WHERE autor = :nom');
         $statement->execute(
             array(
                 ':nom' => $nom
@@ -61,13 +62,14 @@ function seleccionarArticulosUsuario($nom)
  * @param idart: ID de l'article.
  * 
  */
-function eliminarArticulo($idart){
+function eliminarArticulo($idart)
+{
     try {
         $connexio = conectar();
         $statement = $connexio->prepare('DELETE FROM articles WHERE ID = :idart');
         $statement->execute(
             array(
-                ':idart' =>$idart
+                ':idart' => $idart
             )
         );
         reordenarArticulos();
@@ -80,7 +82,8 @@ function eliminarArticulo($idart){
 /**
  * Ordena els articles amb l'identificador adequat.
  */
-function reordenarArticulos(){
+function reordenarArticulos()
+{
     try {
         $connexio = conectar();
         $statement = $connexio->prepare("ALTER TABLE articles DROP ID");
@@ -89,7 +92,6 @@ function reordenarArticulos(){
         $statement->execute();
         $statement = $connexio->prepare("ALTER TABLE articles ADD ID int NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST");
         $statement->execute();
-        
     } catch (PDOException $e) { //
         // mostrarem els errors
         echo "Error: " . $e->getMessage();
@@ -102,13 +104,14 @@ function reordenarArticulos(){
  * @param idart: identiicador de l'article
  * @param article: articles a modificar.
  */
-function editarArticulo($idart, $titulo ,$article, $ruta){
+function editarArticulo($idart, $titulo, $article, $ruta)
+{
     try {
         $connexio = conectar();
         $statement = $connexio->prepare('UPDATE articles SET titulo = :titulo,article = :article, rutaImagen = :ruta WHERE id = :id');
         $statement->execute(
             array(
-                ':id' =>$idart,
+                ':id' => $idart,
                 ':titulo' => $titulo,
                 ':article' => $article,
                 ':ruta' => $ruta
@@ -120,8 +123,16 @@ function editarArticulo($idart, $titulo ,$article, $ruta){
     }
 }
 
-
-function crearArticuloUsuario($id,$titulo, $article, $autor, $rutaImagen){
+/**
+ * Inserta el nou article a la base de dades.
+ * @param id: Identificador de l'article.
+ * @param titulo: Titol de l'article.
+ * @param article: Descripció o frase de l'article.
+ * @param autor: Autor del creador de l'usuari.
+ * @param rutaImagen: Ruta de l'imatge de l'article.
+ */
+function crearArticuloUsuario($id, $titulo, $article, $autor, $rutaImagen)
+{
     try {
         $connexio = conectar();
         $statement = $connexio->prepare('INSERT INTO articles (ID, titulo,article, autor,rutaImagen) VALUES (:id, :titulo,:article, :autor,:imagen )');
@@ -138,10 +149,15 @@ function crearArticuloUsuario($id,$titulo, $article, $autor, $rutaImagen){
         // mostrarem els errors
         echo "Error: " . $e->getMessage();
     }
-
 }
 
-function seleccionarArticuloUnico($id){
+/**
+ * Selecciona l'article a partir de l'identificador.
+ * @param id: Identificador de l'article a seleccionar.
+ * @return statement: Retorna les dades de l'article seleccionat.
+ */
+function seleccionarArticuloUnico($id)
+{
     try {
         $connexio = conectar();
         $statement = $connexio->prepare('SELECT * FROM articles WHERE ID = :id');
@@ -155,7 +171,4 @@ function seleccionarArticuloUnico($id){
         // mostrarem els errors
         echo "Error: " . $e->getMessage();
     }
-
 }
-
-?>

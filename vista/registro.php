@@ -2,6 +2,12 @@
 <html>
 
 <head>
+    <!--
+    
+	  @author Martín Hernan Jaime Bonvin
+	  @version 4.0
+	 
+    -->
 
     <link rel="stylesheet" href="../estil/estil_inici_sessio.css" type="text/css">
     <meta charset="UTF-8" />

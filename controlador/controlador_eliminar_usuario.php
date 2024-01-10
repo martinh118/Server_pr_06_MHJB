@@ -1,6 +1,13 @@
 <?php 
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
 include_once("../model/modelo_eliminar_usuario.php");
 
+/**
+ * Elimina l'usuari a la base de dades i redirecciona la página a l'inici.
+ */
 function eliminarUsuario()
 {
     session_start();

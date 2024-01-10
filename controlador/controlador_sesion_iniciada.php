@@ -1,10 +1,8 @@
 <?php
 
 /**
- * 
- * @author Martín H. Jaime Bonvin
- * @version 2.0
- * 
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
  */
 include_once("../model/modelo_sesion_iniciada.php");
 require_once("../model/modelo_principal.php");

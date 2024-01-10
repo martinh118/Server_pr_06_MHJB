@@ -1,6 +1,13 @@
 <?php
 include_once("../model/modelo_principal.php");
-
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
+/**
+ * Esborra l'usuari de la base de dades.
+ * @param usuario: Nom de l'usuari que vol eliminar el compte.
+ */
 function deleteUser($usuario)
 {
     try {
@@ -18,6 +25,9 @@ function deleteUser($usuario)
     }
 }
 
+/**
+ * Reordena l'identificador de tots els usuaris per que siguin un ordre.
+ */
 function reordenarUsuarios()
 {
     try {

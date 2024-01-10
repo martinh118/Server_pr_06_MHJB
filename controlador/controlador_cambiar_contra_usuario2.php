@@ -1,9 +1,17 @@
 <?php
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
 include_once("../vista/cambiar_contraseña_usuario.php");
 include_once("../model/modelo_contraseña.php");
 include_once("../model/modelo_registro.php");
 
 session_start();
+/**
+ * Realitza les comprovacions bàsiques perquè la contrasenya actual sigui la correcta, i que els dos camps de la nova contrasenya siguin la mateixa.
+ * Si tot és correcte, fa el canvi a la base de dades.
+ */
 function cambiarContra(){
     
     $error = "";
@@ -17,7 +25,10 @@ function cambiarContra(){
     } else echo $error;
 }
 
-
+/**
+ * Fa la comprovació per veure si la contrasenya actual sigui el correcte.
+ * @return error: Retorna el missatge d'error.
+ */
 function comprobarContraActual()
 {
     $nom = $_SESSION['usuario'];
@@ -27,6 +38,11 @@ function comprobarContraActual()
     return password_verify($contraseñaActual, $user['contra']) ? "" : "Error al comprovar contraseyta actual<br>";
 }
 
+
+/**
+ * Comprova que la contrasenya actual i la nova no sigui la mateixa.
+ * @return error: Retorna el missatge d'error.
+ */
 function comprobarActualNueva()
 {
     $contraActual = $_POST['contraActual'];

@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
 //Importa les classes de PHPMailer a un namespace global.
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

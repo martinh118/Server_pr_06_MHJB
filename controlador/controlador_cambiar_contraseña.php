@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
 require_once("../model/modelo_registro.php");
 require_once("../model/modelo_contraseña.php");
 include_once('../vista/cambiar_contraseña.php');

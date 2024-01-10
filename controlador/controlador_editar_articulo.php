@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
 include_once("../model/modelo_sesion_iniciada.php");
 include_once("../model/modelo_principal.php");
 require_once("../vista/editar_articulo.php");

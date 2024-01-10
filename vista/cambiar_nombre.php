@@ -2,12 +2,21 @@
 <html>
 
 <head>
-
+<!--
+    
+	  @author Martín Hernan Jaime Bonvin
+	  @version 4.0
+	 
+    -->
     <link rel="stylesheet" href="../estil/estil_inici_sessio.css" type="text/css">
     <meta charset="UTF-8" />
     <title></title>
 </head>
 <script>
+    /**
+     * Funció per confirmar l'acció.
+     * @return boolean: retorna el boolean que s'hagi seleccionat.
+     */
     function confirmarAccion() {
         if (confirm('Deseas continuar?')) {
             return true;

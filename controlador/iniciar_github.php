@@ -1,4 +1,8 @@
-<?php 
+<?php
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */ 
 include '../hybridauth-master/src/autoload.php';
 
 define('espaciado', "<br><br>");

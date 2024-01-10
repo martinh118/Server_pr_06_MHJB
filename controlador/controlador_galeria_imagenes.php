@@ -1,9 +1,16 @@
 <?php
+
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
 include_once("../vista/galeria_imagenes.php");
 include_once("../model/modelo_principal.php");
 
 
-
+/**
+ * En cas que es detecti un nom d'usuari mostra un header per usuari amb sessió iniciada.
+ */
 function opcionesHeader()
 {
     session_start();
@@ -24,6 +31,10 @@ function opcionesHeader()
     echo $header;
 }
 
+/**
+ * Mostra les imatges de tots els articles disponibles en cas que no hi tingui la sessió iniciada.
+ * Si la sessió està iniciada mostrarà només les imatges dels articles creades per l'usuari.
+ */
 function mostrarImagenes()
 {
     edicion();
@@ -214,6 +225,9 @@ function crearPaginacion($paginas, $numPagina)
     }
 }
 
+/**
+ * Comprova si s'ha seleccionat l'opció d'esborrar amb un paràmetre d'entrada de l'URL.
+ */
 function edicion()
 {
     include_once("../model/modelo_sesion_iniciada.php");

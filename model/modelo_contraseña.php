@@ -1,7 +1,10 @@
 <?php 
 
 include_once("modelo_principal.php");
-
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
 /**
  * Canvia el token a la base de dades
  * @param token: nou token

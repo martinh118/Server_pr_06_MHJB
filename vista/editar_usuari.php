@@ -11,11 +11,15 @@
 <?php
 	/**
 	 * @author Martín Hernan Jaime Bonvin
-	 * @version 1.0
+	 * @version 4.0
 	 */
 	include_once("../controlador/controlador_editar_usuario.php");
 	?>
 <script>
+	/**
+     * Funció per confirmar l'acció.
+     * @return boolean: retorna el boolean que s'hagi seleccionat.
+     */
     function confirmarAccion() {
         if (confirm('Deseas continuar?')) {
             return true;

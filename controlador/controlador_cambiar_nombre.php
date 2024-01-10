@@ -1,4 +1,8 @@
 <?php
+/**
+ * @author Martín Hernan Jaime Bonvin
+ * @version 4.0
+ */
 include_once("../vista/cambiar_nombre.php");
 include_once("../model/modelo_cambiar_nombre.php");
 

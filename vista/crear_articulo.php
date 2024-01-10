@@ -2,7 +2,12 @@
 <html>
 
 <head>
-
+    <!--
+    
+	  @author Martín Hernan Jaime Bonvin
+	  @version 4.0
+	 
+    -->
     <link rel="stylesheet" href="../estil/estil_inici_sessio.css" type="text/css">
     <meta charset="UTF-8" />
     <title></title>
@@ -17,7 +22,7 @@
         <form action="../controlador/controlador_crear_articulo.php" method="post" class="firstForm" enctype="multipart/form-data">
             <h2>Crear article</h2>
             <div>
-            <label>* Titol article</label>
+                <label>* Titol article</label>
                 <div>
                     <!-- Valor d'entrada amb el nom 'nom'. El value que conté dades php fa que en cas que detecti el valor de 'nom' amb la funció isset,
                         mostrarà el valor, en cas contrari mostra null (el valor estarà buit)  -->
@@ -27,7 +32,7 @@
                 <div>
                     <!-- Valor d'entrada amb el nom 'nom'. El value que conté dades php fa que en cas que detecti el valor de 'nom' amb la funció isset,
                         mostrarà el valor, en cas contrari mostra null (el valor estarà buit)  -->
-                    <textarea name="content" id="content"  ></textarea>
+                    <textarea name="content" id="content"></textarea>
                 </div>
                 <div>
                     <label> Aplicar imatge</label>
@@ -43,7 +48,7 @@
         </form>
 
         <form action=" ../controlador/controlador_sesion_iniciada.php" class="thirthForm">
-        <div>
+            <div>
                 <input type="submit" value="Inici" name="pagina">
             </div>
         </form>

@@ -11,7 +11,7 @@
 	<?php
 	/**
 	 * @author Martín Hernan Jaime Bonvin
-	 * @version 1.0
+	 * @version 4.0
 	 */
 
 
